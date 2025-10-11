@@ -1085,9 +1085,14 @@ h3:hover::after {
 @media (max-width: 768px) {
   #internships .timeline-item.left .timeline-date,
   #internships .timeline-item.right .timeline-date {
-    left: 50px;
+    position: relative; 
+    left: 0;
     right: auto;
+    top: 0;
     text-align: left;
+    display: block;
+    margin-bottom: 10px; 
+    padding: 0;
   }
 }
 #internship-progress {
@@ -1123,5 +1128,6 @@ body,
 h3,.connect-btn  {
   cursor:url('./pictures/icons8-cursor-48.png') 16 16, default !important;
 }
+
 
 
