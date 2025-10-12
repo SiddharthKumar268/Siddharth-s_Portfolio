@@ -154,6 +154,35 @@ function revealCertifications() {
   });
 }
 
+const internshipItems = document.querySelectorAll("#internships .timeline-item");
+const internshipProgress = document.getElementById("internship-progress");
+
+function revealInternships() {
+  const windowHeight = window.innerHeight;
+  let lastActive = null;
+  
+  internshipItems.forEach((item) => {
+    const rect = item.getBoundingClientRect();
+    const top = rect.top;
+    
+    if (top < windowHeight - 150) {
+      item.classList.add("active");
+      lastActive = item;
+    }
+  });
+  
+  if (lastActive && internshipProgress) {
+    const itemTop = lastActive.offsetTop;
+    internshipProgress.style.top = itemTop + "px";
+  }
+}
+
+window.addEventListener("scroll", revealInternships);
+window.addEventListener("load", revealInternships);
+document.addEventListener("DOMContentLoaded", revealInternships);
+
+
 window.addEventListener("scroll", revealCertifications);
 window.addEventListener("load", revealCertifications);
+
 
