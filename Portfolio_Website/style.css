@@ -1062,6 +1062,60 @@ h3:hover::after {
   opacity: 1;
   box-shadow: 0 0 8px rgba(185, 255, 52, 0.9);
 }
+#internships .timeline-date {
+  position: absolute;
+  top: 1rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--primary);
+  white-space: nowrap;
+  z-index: 5; /* Above timeline */
+}
+#internships .timeline-item.left .timeline-date {
+  left: calc(100% + 75px); 
+  right: auto;
+  text-align: left;
+}
+#internships .timeline-item.right .timeline-date {
+  right: calc(100% + 75px);
+  left: auto;
+  text-align: right;
+}
+@media (max-width: 768px) {
+  #internships .timeline-item.left .timeline-date,
+  #internships .timeline-item.right .timeline-date {
+    position: relative; 
+    left: 0;
+    right: auto;
+    top: 0;
+    text-align: left;
+    display: block;
+    margin-bottom: 10px; 
+    padding: 0;
+  }
+}
+#internship-progress {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 18px;
+  height: 18px;
+  background: var(--primary);
+  border: 2px solid #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 15px rgba(185, 255, 52, 0.9), 0 0 25px rgba(185, 255, 52, 0.6);
+  transition: top 0.3s ease-out;
+  z-index: 2;
+}
+@media (max-width: 768px) {
+  .timeline-item.left .timeline-date,
+  .timeline-item.right .timeline-date {
+    right: auto;
+    left: 50px;
+    top: -30px;
+  }
+}
 html,
 body,
 *,
@@ -1072,4 +1126,5 @@ body,
 h3,.connect-btn  {
   cursor:url('./pictures/icons8-cursor-48.png') 16 16, default !important;
 }
+
 
