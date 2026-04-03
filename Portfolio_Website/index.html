@@ -63,6 +63,7 @@
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="modal.css" />
 
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-2VKBKXVGBV"></script>
@@ -553,12 +554,133 @@
   <footer>
     <p>© 2025 Siddharth Kumar.</p>
   </footer>
-
+     <!-- ═══ Resume Modal ═══ -->
+    <div class="modal-overlay" id="resumeModal">
+        <div class="modal-container">
+            <button class="modal-close" onclick="closeResumeModal()">&times;</button>
+            <div class="resume-header">
+                <img src="./pictures/avi.jpg" alt="Siddharth Kumar" class="resume-avatar">
+                <div class="resume-header-info">
+                    <h2>Siddharth Goutam Kumar</h2>
+                    <div class="resume-title">Full Stack Web Developer</div>
+                    <div class="resume-contact">
+                        <a href="https://github.com/SiddharthKumar268" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                        <a href="https://linkedin.com/in/siddharth-goutam-kumar-921ab928a" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                        <a href="https://leetcode.com/u/Siddharth_Kumar_268/" target="_blank"><i class="fas fa-code"></i> LeetCode</a>
+                    </div>
+                </div>
+            </div>
+            <div class="resume-tabs">
+                <button class="resume-tab active" data-tab="profile">Profile</button>
+                <button class="resume-tab" data-tab="education">Education</button>
+                <button class="resume-tab" data-tab="experience">Experience</button>
+                <button class="resume-tab" data-tab="skills">Skills</button>
+                <button class="resume-tab" data-tab="certifications">Certifications</button>
+            </div>
+            <div class="resume-tab-content">
+                <!-- Profile -->
+                <div class="resume-tab-panel active" id="tab-profile">
+                    <h4 class="resume-section-title">About Me</h4>
+                    <div class="resume-item">
+                        <p>Passionate Web App Developer and Information Technology student at Vellore Institute of Technology. Specializing in full-stack development with proficiency in MongoDB, ExpressJS, React, and Node.js. Strong foundation in Java, Python, and C++ with rigorous practice in data structures and algorithms.</p>
+                    </div>
+                    <h4 class="resume-section-title" style="margin-top: 1.5rem;">Highlights</h4>
+                    <div class="resume-item">
+                        <p>&#128640; 9+ Full-Stack Projects Built<br>&#128188; 2 Industry Internships Completed<br>&#128220; 6+ Professional Certifications<br>&#127891; CGPA: 9.24 at VIT<br>&#127942; Active in Hackathons &amp; Open Source</p>
+                    </div>
+                </div>
+                <!-- Education -->
+                <div class="resume-tab-panel" id="tab-education">
+                    <h4 class="resume-section-title">Education</h4>
+                    <div class="resume-item">
+                        <h4>Vellore Institute of Technology</h4>
+                        <div class="resume-meta">B.Tech in Information Technology | 2023 &#8211; Present</div>
+                        <p>CGPA: 9.24 &#8212; Focus on full-stack development, DSA, and modern backend technologies.</p>
+                    </div>
+                    <div class="resume-item">
+                        <h4>Delhi Public School, Ranchi</h4>
+                        <div class="resume-meta">Higher Secondary (Class XII) | 2021 &#8211; 2023</div>
+                        <p>Percentage: 94% &#8212; Physics, Chemistry, and Mathematics.</p>
+                    </div>
+                    <div class="resume-item">
+                        <h4>St. Thomas School, Ranchi</h4>
+                        <div class="resume-meta">Matriculation (Class X) | 2020 &#8211; 2021</div>
+                        <p>Percentage: 90% &#8212; Strong academic performance.</p>
+                    </div>
+                </div>
+                <!-- Experience -->
+                <div class="resume-tab-panel" id="tab-experience">
+                    <h4 class="resume-section-title">Internship Experience</h4>
+                    <div class="resume-item">
+                        <h4>BlueStock Fintech &#8212; Full Stack Development Intern</h4>
+                        <div class="resume-meta">Aug 2025 &#8211; Sept 2025</div>
+                        <p>Built BlueFlow, a full-stack web application for financial analysis. Developed REST APIs using Flask, integrated MySQL database, and created a dynamic frontend with automated ML-driven pros/cons generation.</p>
+                        <div style="margin-top: 0.8rem;"><span class="resume-skill-tag">Flask</span> <span class="resume-skill-tag">MySQL</span> <span class="resume-skill-tag">JavaScript</span> <span class="resume-skill-tag">REST API</span> <span class="resume-skill-tag">Machine Learning</span></div>
+                    </div>
+                    <div class="resume-item">
+                        <h4>Edunet Foundation &amp; Shell India &#8212; SDE Intern</h4>
+                        <div class="resume-meta">Jul 2025 &#8211; Aug 2025</div>
+                        <p>Developed a Smart Sprinkler System using Streamlit and machine learning. Built an interactive UI with real-time predictions for 20 sensors/parcels, improving water irrigation efficiency.</p>
+                        <div style="margin-top: 0.8rem;"><span class="resume-skill-tag">Python</span> <span class="resume-skill-tag">Machine Learning</span> <span class="resume-skill-tag">PostgreSQL</span> <span class="resume-skill-tag">Streamlit</span></div>
+                    </div>
+                </div>
+                <!-- Skills -->
+                <div class="resume-tab-panel" id="tab-skills">
+                    <h4 class="resume-section-title">Technical Skills</h4>
+                    <div class="resume-skills-grid">
+                        <div class="resume-skill-category"><h5>&#128187; Languages</h5><div class="resume-skill-tags"><span class="resume-skill-tag">Java</span> <span class="resume-skill-tag">JavaScript</span> <span class="resume-skill-tag">Python</span> <span class="resume-skill-tag">C</span> <span class="resume-skill-tag">C++</span></div></div>
+                        <div class="resume-skill-category"><h5>&#127912; Frontend</h5><div class="resume-skill-tags"><span class="resume-skill-tag">React</span> <span class="resume-skill-tag">HTML5</span> <span class="resume-skill-tag">CSS3</span> <span class="resume-skill-tag">jQuery</span> <span class="resume-skill-tag">AJAX</span></div></div>
+                        <div class="resume-skill-category"><h5>&#9881;&#65039; Backend</h5><div class="resume-skill-tags"><span class="resume-skill-tag">Node.js</span> <span class="resume-skill-tag">Express.js</span> <span class="resume-skill-tag">Flask</span> <span class="resume-skill-tag">REST APIs</span></div></div>
+                        <div class="resume-skill-category"><h5>&#128451;&#65039; Databases</h5><div class="resume-skill-tags"><span class="resume-skill-tag">MongoDB</span> <span class="resume-skill-tag">OracleDB</span> <span class="resume-skill-tag">PostgreSQL</span> <span class="resume-skill-tag">MySQL</span> <span class="resume-skill-tag">Firebase</span></div></div>
+                        <div class="resume-skill-category"><h5>&#128736;&#65039; Tools &amp; Platforms</h5><div class="resume-skill-tags"><span class="resume-skill-tag">Git &amp; GitHub</span> <span class="resume-skill-tag">Postman</span> <span class="resume-skill-tag">Streamlit</span> <span class="resume-skill-tag">VS Code</span> <span class="resume-skill-tag">Hardhat</span></div></div>
+                        <div class="resume-skill-category"><h5>&#129504; Concepts</h5><div class="resume-skill-tags"><span class="resume-skill-tag">DSA</span> <span class="resume-skill-tag">OOP</span> <span class="resume-skill-tag">System Design</span> <span class="resume-skill-tag">Agile</span> <span class="resume-skill-tag">Blockchain</span></div></div>
+                    </div>
+                </div>
+                <!-- Certifications -->
+                <div class="resume-tab-panel" id="tab-certifications">
+                    <h4 class="resume-section-title">Certifications</h4>
+                    <div class="resume-item"><h4>MongoDB &#8212; CRUD Operations</h4><div class="resume-meta">Jun 2025</div><p>Digital credential validating CRUD operations, query design, and data management in MongoDB.</p></div>
+                    <div class="resume-item"><h4>Deloitte &#8212; Cyber Job Simulation</h4><div class="resume-meta">May 2025</div><p>Job simulation involving web activity log analysis and client support during a cybersecurity breach.</p></div>
+                    <div class="resume-item"><h4>JPMorgan Chase &amp; Co &#8212; Excel Skills</h4><div class="resume-meta">Sept 2024</div><p>Mastered Excel data analysis, VBA macros, and visualization through Forage platform.</p></div>
+                    <div class="resume-item"><h4>Scaler &#8212; Java DSA Fundamentals</h4><div class="resume-meta">Apr 2024</div><p>Core Java programming and DSA fundamentals for efficient problem-solving.</p></div>
+                    <div class="resume-item"><h4>Scaler &#8212; Java Fundamentals</h4><div class="resume-meta">Feb 2024</div><p>Core Java concepts including OOP, data types, control flow, and exception handling.</p></div>
+                    <div class="resume-item"><h4>Google &#8212; Google Workspace</h4><div class="resume-meta">Jan 2024</div><p>No-code apps with AppSheet, Workspace integration, and Cloud Storage management.</p></div>
+                </div>
+            </div>
+            <div class="resume-download-bar">
+                <button class="resume-print-btn" onclick="window.print()"><i class="fas fa-print"></i> Print Resume</button>
+                <a href="https://drive.google.com/file/d/1owEVjFS2YFYdZ8PGp6Jk989Qu0iO7qoO/view?usp=drive_link" class="resume-download-btn" target="_blank"><i class="fas fa-download"></i> Download PDF</a>
+            </div>
+        </div>
+    </div>
+    <div class="modal-overlay" id="projectModal">
+        <div class="modal-container project-modal-content">
+            <button class="modal-close" onclick="closeProjectModal()">&times;</button>
+            <div class="project-modal-img-wrap">
+                <img src="" alt="" class="project-modal-image" id="projectModalImage">
+            </div>
+            <div class="project-modal-body">
+                <span class="project-modal-category" id="projectModalCategory"></span>
+                <h2 id="projectModalTitle"></h2>
+                <p class="project-modal-desc" id="projectModalDesc"></p>
+                <h5 class="project-modal-section-title">Tech Stack</h5>
+                <div class="project-modal-tech" id="projectModalTech"></div>
+                <h5 class="project-modal-section-title">Key Features</h5>
+                <ul class="project-modal-features" id="projectModalFeatures"></ul>
+            </div>
+            <div class="project-modal-actions">
+                <a href="#" target="_blank" class="project-modal-btn primary" id="projectModalRepoBtn"><i class="fab fa-github"></i> View Repository</a>
+                <button class="project-modal-btn secondary" onclick="closeProjectModal()"><i class="fas fa-times"></i> Close</button>
+            </div>
+        </div>
+    </div>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.1/tsparticles.bundle.min.js"></script>
   <script src="particle.js"></script>
   <script src="script.js"></script>
   <script src="./image.js"></script>
+  <script src="modal.js"></script>
+
 </body>
 
 </html>
