@@ -1,0 +1,635 @@
+/* ================================================================
+   PREMIUM FEATURES — Resume Modal & Project Detail Modal
+   GitHub Deployment Version
+   ================================================================ */
+
+/* ── Shared Modal Base ───────────────────────────────────────── */
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+body.modal-open {
+  overflow: hidden;
+}
+
+.modal-container {
+  background: linear-gradient(145deg, #1a1a1a 0%, #141414 100%);
+  border: 1px solid rgba(185, 255, 52, 0.15);
+  border-radius: 24px;
+  max-width: 920px;
+  width: 92%;
+  max-height: 88vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  transform: scale(0.92) translateY(30px);
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.6),
+    0 0 60px rgba(185, 255, 52, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  position: relative;
+}
+
+.modal-overlay.active .modal-container {
+  transform: scale(1) translateY(0);
+}
+
+/* Scrollbar */
+.modal-container::-webkit-scrollbar {
+  width: 5px;
+}
+.modal-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+.modal-container::-webkit-scrollbar-thumb {
+  background: rgba(185, 255, 52, 0.25);
+  border-radius: 4px;
+}
+.modal-container::-webkit-scrollbar-thumb:hover {
+  background: rgba(185, 255, 52, 0.45);
+}
+
+/* Close Button */
+.modal-close {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.2rem;
+  width: 42px;
+  height: 42px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  color: #aaa;
+  font-size: 1.4rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 100;
+  line-height: 1;
+  padding: 0;
+}
+
+.modal-close:hover {
+  background: rgba(185, 255, 52, 0.15);
+  border-color: rgba(185, 255, 52, 0.3);
+  color: #b9ff34;
+  transform: rotate(90deg) scale(1.1);
+}
+
+/* ================================================================
+   RESUME MODAL
+   ================================================================ */
+
+.resume-header {
+  display: flex;
+  align-items: center;
+  gap: 1.8rem;
+  padding: 2.5rem 2.5rem 1.8rem;
+}
+
+.resume-avatar {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  border: 3px solid rgba(185, 255, 52, 0.5);
+  object-fit: cover;
+  box-shadow: 0 0 30px rgba(185, 255, 52, 0.2);
+  flex-shrink: 0;
+}
+
+.resume-header-info h2 {
+  font-size: 1.9rem;
+  color: white;
+  font-weight: 800;
+  margin: 0 0 0.25rem 0;
+  letter-spacing: -0.02em;
+}
+
+.resume-header-info .resume-title {
+  color: #b9ff34;
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: 0.6rem;
+}
+
+.resume-header-info .resume-contact {
+  display: flex;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+}
+
+.resume-contact a {
+  color: #777;
+  text-decoration: none;
+  font-size: 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: color 0.3s ease;
+}
+
+.resume-contact a:hover {
+  color: #b9ff34;
+}
+
+/* Tabs */
+.resume-tabs {
+  display: flex;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  padding: 0 2.5rem;
+  overflow-x: auto;
+  gap: 0.25rem;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.resume-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.resume-tab {
+  padding: 1rem 1.4rem;
+  color: #666;
+  font-weight: 600;
+  font-size: 0.92rem;
+  cursor: pointer;
+  border: none;
+  background: none;
+  transition: color 0.3s ease;
+  position: relative;
+  white-space: nowrap;
+  font-family: 'Inter', sans-serif;
+}
+
+.resume-tab:hover {
+  color: #bbb;
+}
+
+.resume-tab.active {
+  color: #b9ff34;
+}
+
+.resume-tab.active::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 15%;
+  width: 70%;
+  height: 3px;
+  background: #b9ff34;
+  border-radius: 3px 3px 0 0;
+  box-shadow: 0 0 12px rgba(185, 255, 52, 0.5);
+  animation: resumeTabIn 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes resumeTabIn {
+  from { transform: scaleX(0); opacity: 0; }
+  to   { transform: scaleX(1); opacity: 1; }
+}
+
+/* Tab Content */
+.resume-tab-content {
+  padding: 2rem 2.5rem;
+  min-height: 320px;
+}
+
+.resume-tab-panel {
+  display: none;
+  animation: resumeFadeIn 0.45s ease;
+}
+
+.resume-tab-panel.active {
+  display: block;
+}
+
+@keyframes resumeFadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Section Titles */
+.resume-section-title {
+  color: #b9ff34;
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 1.3rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid rgba(185, 255, 52, 0.12);
+  letter-spacing: 0.02em;
+}
+
+/* Resume Items */
+.resume-item {
+  margin-bottom: 1.2rem;
+  padding: 1.2rem 1.4rem;
+  background: rgba(255, 255, 255, 0.025);
+  border-radius: 14px;
+  border-left: 3px solid rgba(185, 255, 52, 0.4);
+  transition: all 0.3s ease;
+}
+
+.resume-item:hover {
+  background: rgba(185, 255, 52, 0.04);
+  border-left-color: #b9ff34;
+  transform: translateX(4px);
+}
+
+.resume-item h4 {
+  color: white;
+  font-size: 1.05rem;
+  margin: 0 0 0.3rem 0;
+  font-weight: 700;
+}
+
+.resume-item .resume-meta {
+  color: #b9ff34;
+  font-size: 0.82rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  opacity: 0.85;
+}
+
+.resume-item p {
+  color: #999;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* Skills Grid */
+.resume-skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.4rem;
+}
+
+.resume-skill-category {
+  background: rgba(255, 255, 255, 0.025);
+  border-radius: 14px;
+  padding: 1.2rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: border-color 0.3s ease;
+}
+
+.resume-skill-category:hover {
+  border-color: rgba(185, 255, 52, 0.15);
+}
+
+.resume-skill-category h5 {
+  color: white;
+  font-size: 0.95rem;
+  margin: 0 0 0.8rem 0;
+  font-weight: 600;
+}
+
+.resume-skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.resume-skill-tag {
+  background: rgba(185, 255, 52, 0.1);
+  color: #b9ff34;
+  padding: 0.35rem 0.85rem;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  border: 1px solid rgba(185, 255, 52, 0.15);
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.resume-skill-tag:hover {
+  background: rgba(185, 255, 52, 0.22);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(185, 255, 52, 0.15);
+}
+
+/* Download Bar */
+.resume-download-bar {
+  padding: 1.3rem 2.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 0 0 24px 24px;
+}
+
+.resume-download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #b9ff34;
+  color: #111;
+  padding: 0.75rem 1.8rem;
+  border-radius: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  font-size: 0.92rem;
+  font-family: 'Inter', sans-serif;
+}
+
+.resume-download-btn:hover {
+  background: #a3e635;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(185, 255, 52, 0.35);
+}
+
+.resume-print-btn {
+  background: transparent;
+  color: #666;
+  border: 1px solid #333;
+  padding: 0.75rem 1.4rem;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.88rem;
+  font-family: 'Inter', sans-serif;
+}
+
+.resume-print-btn:hover {
+  border-color: rgba(185, 255, 52, 0.4);
+  color: #b9ff34;
+  background: rgba(185, 255, 52, 0.05);
+}
+
+/* ================================================================
+   PROJECT DETAIL MODAL
+   ================================================================ */
+
+.project-modal-content {
+  padding: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.project-modal-img-wrap {
+  position: relative;
+  width: 100%;
+  height: 320px;
+  overflow: hidden;
+}
+
+.project-modal-img-wrap::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background: linear-gradient(to top, #1a1a1a, transparent);
+  pointer-events: none;
+}
+
+.project-modal-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s ease;
+}
+
+.project-modal-content:hover .project-modal-image {
+  transform: scale(1.03);
+}
+
+.project-modal-body {
+  padding: 1.8rem 2.5rem 1.5rem;
+}
+
+.project-modal-category {
+  color: #b9ff34;
+  font-size: 0.82rem;
+  font-weight: 700;
+  display: inline-block;
+  background: rgba(185, 255, 52, 0.1);
+  padding: 0.3rem 1rem;
+  border-radius: 20px;
+  border: 1px solid rgba(185, 255, 52, 0.15);
+  margin-bottom: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.project-modal-body h2 {
+  color: white;
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin: 0 0 1rem 0;
+  letter-spacing: -0.02em;
+}
+
+.project-modal-desc {
+  color: #999;
+  font-size: 0.98rem;
+  line-height: 1.8;
+  margin-bottom: 1.8rem;
+}
+
+.project-modal-section-title {
+  color: #b9ff34;
+  font-size: 0.82rem;
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  opacity: 0.8;
+}
+
+/* Tech Tags */
+.project-modal-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-bottom: 1.8rem;
+}
+
+.project-modal-tech-tag {
+  background: rgba(185, 255, 52, 0.1);
+  color: #b9ff34;
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  border: 1px solid rgba(185, 255, 52, 0.15);
+  transition: all 0.3s ease;
+}
+
+.project-modal-tech-tag:hover {
+  background: rgba(185, 255, 52, 0.22);
+  transform: translateY(-1px);
+}
+
+/* Features List */
+.project-modal-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1rem 0;
+}
+
+.project-modal-features li {
+  color: #aaa;
+  font-size: 0.92rem;
+  padding: 0.45rem 0;
+  padding-left: 1.6rem;
+  position: relative;
+  line-height: 1.5;
+}
+
+.project-modal-features li::before {
+  content: '\25B9';
+  color: #b9ff34;
+  position: absolute;
+  left: 0;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+/* Action Buttons */
+.project-modal-actions {
+  display: flex;
+  gap: 0.8rem;
+  padding: 1.3rem 2.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 0 0 24px 24px;
+}
+
+.project-modal-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: none;
+  font-size: 0.92rem;
+  font-family: 'Inter', sans-serif;
+}
+
+.project-modal-btn.primary {
+  background: #b9ff34;
+  color: #111;
+}
+
+.project-modal-btn.primary:hover {
+  background: #a3e635;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(185, 255, 52, 0.35);
+}
+
+.project-modal-btn.secondary {
+  background: transparent;
+  color: #999;
+  border: 1px solid #333;
+}
+
+.project-modal-btn.secondary:hover {
+  border-color: rgba(185, 255, 52, 0.4);
+  color: #b9ff34;
+}
+
+/* Card clickable hint */
+#work1 .card {
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  border: 1px solid transparent;
+}
+
+#work1 .card:hover {
+  border-color: rgba(185, 255, 52, 0.12);
+}
+
+#work1 .card::after {
+  content: 'Click for details';
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  background: rgba(185, 255, 52, 0.12);
+  color: #b9ff34;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 0.25rem 0.7rem;
+  border-radius: 8px;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+#work1 .card:hover::after {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Responsive ──────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .resume-header {
+    flex-direction: column;
+    text-align: center;
+    padding: 2rem 1.5rem 1.5rem;
+    gap: 1rem;
+  }
+  .resume-avatar { width: 90px; height: 90px; }
+  .resume-header-info h2 { font-size: 1.5rem; }
+  .resume-header-info .resume-contact { justify-content: center; }
+  .resume-tabs { padding: 0 1rem; }
+  .resume-tab { padding: 0.8rem 1rem; font-size: 0.82rem; }
+  .resume-tab-content { padding: 1.5rem; }
+  .resume-skills-grid { grid-template-columns: 1fr; }
+  .resume-download-bar {
+    flex-direction: column;
+    gap: 0.8rem;
+    padding: 1.2rem 1.5rem;
+    text-align: center;
+  }
+  .project-modal-img-wrap { height: 200px; }
+  .project-modal-body { padding: 1.5rem; }
+  .project-modal-body h2 { font-size: 1.4rem; }
+  .project-modal-actions { flex-direction: column; padding: 1.2rem 1.5rem; }
+  .modal-container { width: 95%; max-height: 92vh; border-radius: 18px; }
+  .modal-close { top: 0.8rem; right: 0.8rem; width: 36px; height: 36px; font-size: 1.2rem; }
+  #work1 .card::after { display: none; }
+}
+
+@media (max-width: 480px) {
+  .resume-header { padding: 1.5rem 1rem 1rem; }
+  .resume-tab-content { padding: 1rem; }
+  .resume-item { padding: 1rem; }
+  .project-modal-img-wrap { height: 160px; }
+  .project-modal-body { padding: 1.2rem; }
+}
