@@ -184,5 +184,27 @@ document.addEventListener("DOMContentLoaded", revealInternships);
 
 window.addEventListener("scroll", revealCertifications);
 window.addEventListener("load", revealCertifications);
+const hackathonItems = document.querySelectorAll("#hackathons .timeline-item");
+const hackathonProgress = document.getElementById("hackathon-progress");
 
+function revealHackathons() {
+  const windowHeight = window.innerHeight;
+  let lastActive = null;
+
+  hackathonItems.forEach((item) => {
+    const top = item.getBoundingClientRect().top;
+    if (top < windowHeight - 150) {
+      item.classList.add("active");
+      lastActive = item;
+    }
+  });
+
+  if (lastActive && hackathonProgress) {
+    hackathonProgress.style.top = lastActive.offsetTop + "px";
+  }
+}
+
+window.addEventListener("scroll", revealHackathons);
+window.addEventListener("load", revealHackathons);
+document.addEventListener("DOMContentLoaded", revealHackathons);
 
