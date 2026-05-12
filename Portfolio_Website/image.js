@@ -65,11 +65,16 @@ if (achievementsContainer) {
   const achCards = achievementsContainer.querySelectorAll("span");
   const ACH_DRAG_THRESHOLD = 10; // px before drag engages
 
+  function getAnglePerCard() {
+    return window.innerWidth <= 768 ? 40 : 45;
+  }
+
   function updateBlueGlow() {
+    const anglePerCard = getAnglePerCard();
     achCards.forEach((card) => {
       const i = parseInt(card.style.getPropertyValue("--i"));
       // Calculate each card's effective angle relative to viewer
-      const cardAngle = ((i * 45) + achAngle) % 360;
+      const cardAngle = ((i * anglePerCard) + achAngle) % 360;
       const normalizedAngle = ((cardAngle % 360) + 360) % 360;
 
       // Cards facing away (90-270 degrees) get the blue glow
