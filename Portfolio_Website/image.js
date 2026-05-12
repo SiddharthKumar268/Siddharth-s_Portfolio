@@ -21,7 +21,7 @@ if ('IntersectionObserver' in window && container) {
 function animateRotation() {
   if (skillsVisible) {
     if (!dragging) {
-      currentAngle = (currentAngle + rotationSpeed) % 360;
+      currentAngle = currentAngle + rotationSpeed;
     }
     container.style.transform = `translateZ(-150px) rotateY(${currentAngle}deg)`;
   }
@@ -70,7 +70,7 @@ const achievementsContainer = document.querySelector(".achievements-gallery-cont
 if (achievementsContainer) {
   let achAngle = 0;
   const isMobile = window.innerWidth <= 768;
-  const achSpeed = isMobile ? 0.6 : 0.15; // Much faster rotation on mobile
+  const achSpeed = isMobile ? 0.5 : 0.2; // Same speed as skills carousel
   let achDragging = false;
   let achDragEngaged = false; // true only after min threshold
   let achDragStartX = 0;
@@ -114,7 +114,7 @@ if (achievementsContainer) {
   function animateAchievements() {
     if (achVisible) {
       if (!achDragEngaged) {
-        achAngle = (achAngle + achSpeed) % 360;
+        achAngle = achAngle + achSpeed;
       }
       achievementsContainer.style.transform = `translateZ(-150px) rotateY(${achAngle}deg)`;
       // Throttle glow updates: every 3rd frame on mobile, every frame on desktop
