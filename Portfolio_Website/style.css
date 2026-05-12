@@ -469,19 +469,16 @@ section h3 {
   margin: 0 auto 2rem;
   transform-style: preserve-3d;
   transform: perspective(1200px) rotateY(0deg);
-  transition: transform 0.7s;
   cursor: grab;
 }
 
 .image-container span {
-  --deg: calc(var(--i) * 45deg);
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 160px;
-  height: 180px;
-  /* remove the duplicate transform above */
-  transform: translate(-50%, -50%) rotateY(var(--deg)) translateZ(400px);
+  width: 140px;
+  height: 160px;
+  transform: translate(-50%, -50%) rotateY(var(--deg)) translateZ(480px);
   transform-origin: center center;
   background: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(8px);
@@ -797,18 +794,18 @@ footer {
   }
 
   .image-container span {
-    width: 120px;
-    height: 140px;
-    transform: translate(-50%, -50%) rotateY(calc(var(--i) * 30deg)) translateZ(250px);
+    width: 100px;
+    height: 120px;
+    transform: translate(-50%, -50%) rotateY(var(--deg)) translateZ(280px);
   }
 
   .image-container span img {
-    width: 90px;
-    height: 90px;
+    width: 70px;
+    height: 70px;
   }
 
   .image-container span h4 {
-    font-size: 0.85rem;
+    font-size: 0.75rem;
   }
 }
 
@@ -820,18 +817,18 @@ footer {
   }
 
   .image-container span {
-    width: 100px;
-    height: 120px;
-    transform: translate(-50%, -50%) rotateY(calc(var(--i) * 29.5deg)) translateZ(180px);
+    width: 80px;
+    height: 100px;
+    transform: translate(-50%, -50%) rotateY(var(--deg)) translateZ(200px);
   }
 
   .image-container span img {
-    width: 70px;
-    height: 70px;
+    width: 55px;
+    height: 55px;
   }
 
   .image-container span h4 {
-    font-size: 0.75rem;
+    font-size: 0.65rem;
   }
 }
 
@@ -1452,7 +1449,6 @@ h3:hover::after {
   margin: 0 auto 2rem;
   transform-style: preserve-3d;
   transform: perspective(1200px) rotateY(0deg);
-  transition: transform 0.7s;
   cursor: grab;
 }
 
