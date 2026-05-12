@@ -154,6 +154,10 @@ function revealCertifications() {
   });
 }
 
+window.addEventListener("scroll", revealCertifications);
+window.addEventListener("load", revealCertifications);
+
+//Added here for internships
 const internshipItems = document.querySelectorAll("#internships .timeline-item");
 const internshipProgress = document.getElementById("internship-progress");
 
@@ -180,10 +184,10 @@ function revealInternships() {
 window.addEventListener("scroll", revealInternships);
 window.addEventListener("load", revealInternships);
 document.addEventListener("DOMContentLoaded", revealInternships);
-
-
-window.addEventListener("scroll", revealCertifications);
-window.addEventListener("load", revealCertifications);
+  // <!-- ════════════════════════════════════════════════════ -->
+  // <!-- ADD THE FOLLOWING BLOCK TO THE BOTTOM OF script.js  -->
+  // <!-- ════════════════════════════════════════════════════ -->
+  // <!-- Added here for hackathons -->
 const hackathonItems = document.querySelectorAll("#hackathons .timeline-item");
 const hackathonProgress = document.getElementById("hackathon-progress");
 
@@ -207,4 +211,3 @@ function revealHackathons() {
 window.addEventListener("scroll", revealHackathons);
 window.addEventListener("load", revealHackathons);
 document.addEventListener("DOMContentLoaded", revealHackathons);
-
