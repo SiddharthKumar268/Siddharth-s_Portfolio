@@ -619,20 +619,14 @@ section h3 {
   }
 
   .timeline-line {
-    left: 8px;
+    left: 8px !important;
   }
 
-  #timeline-progress {
-    left: 8px;
-    transform: translate(-50%, -50%);
-    width: 14px;
-    height: 14px;
-  }
-
+  #timeline-progress,
   #certification-progress,
   #internship-progress,
   #hackathon-progress {
-    left: 8px;
+    left: 8px !important;
     transform: translate(-50%, -50%);
     width: 14px;
     height: 14px;
@@ -1062,46 +1056,49 @@ z-index: 2;
   }
 
   .timeline-line {
-    left: 6px;
+    left: 6px !important;
+    width: 3px;
   }
 
   #timeline-progress,
   #certification-progress,
   #internship-progress,
   #hackathon-progress {
-    left: 6px;
-    width: 12px;
-    height: 12px;
+    left: 6px !important;
+    width: 10px;
+    height: 10px;
   }
 
   .timeline-item {
-    width: calc(100% - 22px) !important;
+    width: calc(100% - 20px) !important;
     left: 0 !important;
     right: 0 !important;
-    padding: 0.8rem 0.8rem;
-    margin: 1.2rem 0;
-    margin-left: 22px !important;
+    padding: 0.6rem 0.7rem;
+    margin: 0.8rem 0;
+    margin-left: 20px !important;
     margin-right: 0 !important;
-    border-radius: 10px;
+    border-radius: 8px;
+    font-size: 0.85rem;
   }
 
   .timeline-content h4 {
-    font-size: 1rem;
-    margin-bottom: 0.3rem;
+    font-size: 0.88rem;
+    margin-bottom: 0.2rem;
   }
 
   .timeline-content p {
-    font-size: 0.85rem;
-    margin-bottom: 0.15rem;
+    font-size: 0.78rem;
+    margin-bottom: 0.1rem;
+    line-height: 1.4;
   }
 
   .timeline-content span {
-    font-size: 0.8rem;
-    line-height: 1.5;
+    font-size: 0.72rem;
+    line-height: 1.4;
   }
 
   .timeline-date {
-    font-size: 0.78rem !important;
+    font-size: 0.7rem !important;
   }
 
   /* ── Skill badges (inside timeline) ── */
