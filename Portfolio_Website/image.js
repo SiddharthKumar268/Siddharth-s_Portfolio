@@ -2,17 +2,29 @@
 const container = document.querySelector(".image-container");
 
 let currentAngle = 0;
-const rotationSpeed = 0.2;
+const skillsMobile = window.innerWidth <= 768;
+const rotationSpeed = skillsMobile ? 0.5 : 0.2;
+let skillsVisible = true;
 
 let dragging = false;
 let dragStartX = 0;
 let angleAtStart = 0;
 
+// Pause when off-screen
+if ('IntersectionObserver' in window && container) {
+  const skillsObs = new IntersectionObserver((entries) => {
+    skillsVisible = entries[0].isIntersecting;
+  }, { threshold: 0.1 });
+  skillsObs.observe(container);
+}
+
 function animateRotation() {
-  if (!dragging) {
-    currentAngle = (currentAngle + rotationSpeed) % 360;
+  if (skillsVisible) {
+    if (!dragging) {
+      currentAngle = (currentAngle + rotationSpeed) % 360;
+    }
+    container.style.transform = `translateZ(-150px) rotateY(${currentAngle}deg)`;
   }
-  container.style.transform = `translateZ(-150px) rotateY(${currentAngle}deg)`;
   requestAnimationFrame(animateRotation);
 }
 
@@ -58,7 +70,7 @@ const achievementsContainer = document.querySelector(".achievements-gallery-cont
 if (achievementsContainer) {
   let achAngle = 0;
   const isMobile = window.innerWidth <= 768;
-  const achSpeed = isMobile ? 0.3 : 0.15; // Faster rotation on mobile
+  const achSpeed = isMobile ? 0.6 : 0.15; // Much faster rotation on mobile
   let achDragging = false;
   let achDragEngaged = false; // true only after min threshold
   let achDragStartX = 0;
