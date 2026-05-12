@@ -57,13 +57,16 @@ const achievementsContainer = document.querySelector(".achievements-gallery-cont
 
 if (achievementsContainer) {
   let achAngle = 0;
-  const achSpeed = 0.15;
+  const isMobile = window.innerWidth <= 768;
+  const achSpeed = isMobile ? 0.3 : 0.15; // Faster rotation on mobile
   let achDragging = false;
   let achDragEngaged = false; // true only after min threshold
   let achDragStartX = 0;
   let achAngleAtStart = 0;
   const achCards = achievementsContainer.querySelectorAll("span");
   const ACH_DRAG_THRESHOLD = 10; // px before drag engages
+  let achVisible = true; // pause when off-screen
+  let glowFrame = 0; // throttle glow updates
 
   function getAnglePerCard() {
     return window.innerWidth <= 768 ? 40 : 45;
@@ -88,12 +91,26 @@ if (achievementsContainer) {
     });
   }
 
+  // Pause animation when not visible (saves CPU/GPU)
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      achVisible = entries[0].isIntersecting;
+    }, { threshold: 0.1 });
+    observer.observe(achievementsContainer);
+  }
+
   function animateAchievements() {
-    if (!achDragEngaged) {
-      achAngle = (achAngle + achSpeed) % 360;
+    if (achVisible) {
+      if (!achDragEngaged) {
+        achAngle = (achAngle + achSpeed) % 360;
+      }
+      achievementsContainer.style.transform = `translateZ(-150px) rotateY(${achAngle}deg)`;
+      // Throttle glow updates: every 3rd frame on mobile, every frame on desktop
+      glowFrame++;
+      if (!isMobile || glowFrame % 3 === 0) {
+        updateBlueGlow();
+      }
     }
-    achievementsContainer.style.transform = `translateZ(-150px) rotateY(${achAngle}deg)`;
-    updateBlueGlow();
     requestAnimationFrame(animateAchievements);
   }
 
