@@ -1098,7 +1098,7 @@ footer {
     margin-right: 0 !important;
     border-radius: 8px;
     font-size: 0.85rem;
-    max-width: calc(100vw - 30px);
+    max-width: 100%;
     overflow-wrap: break-word;
     word-break: break-word;
   }
@@ -1149,7 +1149,7 @@ footer {
   }
 
   .card {
-    width: calc(100vw - 2rem);
+    width: 100%;
     max-width: 320px;
     padding: 1rem;
     border-radius: 10px;
