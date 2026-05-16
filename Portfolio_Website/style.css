@@ -1920,17 +1920,6 @@ body {
   overflow-x: hidden !important;
 }
 
-.timeline-wrapper {
-  overflow: hidden !important;
-  position: relative !important;
-  width: 100% !important;
-  box-sizing: border-box !important;
-}
-
-.timeline-line {
-  overflow: hidden !important;
-}
-
 .education-section,
 #certifications,
 #internships,
@@ -1948,6 +1937,18 @@ section {
   overflow: hidden !important;
   max-width: 100vw !important;
   box-sizing: border-box !important;
+}
+
+.timeline-wrapper {
+  overflow-x: hidden !important;
+  overflow-y: visible !important;
+  position: relative !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.timeline-line {
+  overflow: visible !important;
 }
 
 @media (max-width: 768px) {
