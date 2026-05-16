@@ -1920,7 +1920,70 @@ body {
   overflow-x: hidden !important;
 }
 
+.timeline-wrapper {
+  overflow: hidden !important;
+  position: relative !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.timeline-line {
+  overflow: visible !important;
+}
+
+.education-section,
+#certifications,
+#internships,
+#hackathons,
+#work,
+#work1,
+#about,
+#contact {
+  overflow: hidden !important;
+  max-width: 100vw !important;
+  box-sizing: border-box !important;
+}
+
+section {
+  overflow: hidden !important;
+  max-width: 100vw !important;
+  box-sizing: border-box !important;
+}
+
 @media (max-width: 768px) {
+  .timeline-wrapper {
+    padding: 0 0.5rem 0 1.5rem !important;
+  }
+
+  .timeline-line {
+    left: 8px !important;
+    width: 2px !important;
+    overflow: visible !important;
+  }
+
+  #timeline-progress,
+  #certification-progress,
+  #internship-progress,
+  #hackathon-progress {
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 12px !important;
+    height: 12px !important;
+  }
+
+  .timeline-item,
+  .timeline-item.left,
+  .timeline-item.right {
+    width: calc(100% - 20px) !important;
+    max-width: calc(100% - 20px) !important;
+    left: 0 !important;
+    right: 0 !important;
+    margin-left: 20px !important;
+    margin-right: 0 !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+  }
+
   .timeline-date,
   .timeline-item.left .timeline-date,
   .timeline-item.right .timeline-date,
@@ -1936,33 +1999,6 @@ body {
     display: block !important;
     text-align: left !important;
     margin-bottom: 0.4rem !important;
-  }
-
-  .timeline-item,
-  .timeline-item.left,
-  .timeline-item.right {
-    width: calc(100% - 28px) !important;
-    max-width: calc(100% - 28px) !important;
-    left: 0 !important;
-    right: 0 !important;
-    margin-left: 28px !important;
-    margin-right: 0 !important;
-    box-sizing: border-box !important;
-  }
-
-  .timeline-line {
-    left: 8px !important;
-    width: 2px !important;
-  }
-
-  #timeline-progress,
-  #certification-progress,
-  #internship-progress,
-  #hackathon-progress {
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    width: 12px !important;
-    height: 12px !important;
   }
 }
 
