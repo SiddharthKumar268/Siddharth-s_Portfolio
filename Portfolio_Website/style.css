@@ -1923,6 +1923,7 @@ body {
 
 * {
   max-width: 100%;
+  box-sizing: border-box;
 }
 
 .image-container,
@@ -1935,6 +1936,74 @@ body {
 section {
   overflow: visible !important;
   overflow-x: hidden !important;
+}
+
+.education-section,
+#certifications,
+#internships,
+#hackathons {
+  overflow: hidden !important;
+}
+
+.timeline-wrapper {
+  overflow: hidden !important;
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  .timeline-wrapper {
+    padding: 0 0.5rem 0 1.5rem !important;
+    overflow: hidden !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .timeline-line {
+    left: 4px !important;
+    width: 2px !important;
+  }
+
+  #timeline-progress,
+  #certification-progress,
+  #internship-progress,
+  #hackathon-progress {
+    left: 4px !important;
+    transform: translate(-50%, -50%) !important;
+    width: 10px !important;
+    height: 10px !important;
+  }
+
+  .timeline-item,
+  .timeline-item.left,
+  .timeline-item.right {
+    width: calc(100% - 20px) !important;
+    max-width: calc(100% - 20px) !important;
+    left: 0 !important;
+    right: 0 !important;
+    margin-left: 20px !important;
+    margin-right: 0 !important;
+    position: relative !important;
+    overflow: hidden !important;
+    word-break: break-word !important;
+    overflow-wrap: break-word !important;
+  }
+
+  .timeline-date,
+  .timeline-item.left .timeline-date,
+  .timeline-item.right .timeline-date,
+  #internships .timeline-item.left .timeline-date,
+  #internships .timeline-item.right .timeline-date,
+  #hackathons .timeline-item.left .timeline-date,
+  #hackathons .timeline-item.right .timeline-date {
+    position: static !important;
+    left: auto !important;
+    right: auto !important;
+    top: auto !important;
+    display: block !important;
+    text-align: left !important;
+    margin-bottom: 0.4rem !important;
+    white-space: normal !important;
+  }
 }
 
 @media (max-width: 580px) {
@@ -2003,6 +2072,20 @@ section {
   .achievements-gallery-container span::after {
     display: none !important;
   }
+
+  .hero {
+    overflow: hidden !important;
+  }
+
+  .tagline-container {
+    overflow: hidden !important;
+    width: 100% !important;
+  }
+
+  .tagline {
+    overflow-wrap: break-word !important;
+    word-break: break-word !important;
+  }
 }
 
 @media (max-width: 400px) {
@@ -2046,26 +2129,9 @@ section {
   }
 }
 
-@media (max-width: 580px) {
-  .hero {
-    overflow: hidden !important;
-  }
-
-  .tagline-container {
-    overflow: hidden !important;
-    width: 100% !important;
-  }
-
-  .tagline {
-    overflow-wrap: break-word !important;
-    word-break: break-word !important;
-  }
-}
-
 #achievementModal {
   overflow: hidden !important;
 }
-
 html,
 body,
 *,
