@@ -1915,7 +1915,7 @@ h3:hover::after {
   }
 }
 
-html,
+/* html,
 body {
   overflow-x: hidden !important;
 }
@@ -2107,7 +2107,7 @@ section {
 
 #achievementModal {
   overflow: hidden !important;
-}
+} */
 html,
 body,
 *,
