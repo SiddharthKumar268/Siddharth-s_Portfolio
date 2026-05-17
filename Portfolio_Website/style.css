@@ -541,14 +541,14 @@ section h3 {
   width: 4px;
   height: 100%;
   background: #333;
-  transform: translate(-50%, -50%);
+  transform: translateX(-50%);
 }
 
 #timeline-progress {
   position: absolute;
   top: 0;
   left: 50%;
-  transform: translate(-50%);
+  transform: translate(-50%, -50%);
   width: 16px;
   height: 16px;
   background: var(--primary);
@@ -627,7 +627,7 @@ section h3 {
   #internship-progress,
   #hackathon-progress {
     left: 50% !important;
-    ttransform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
     width: 14px;
     height: 14px;
   }
@@ -872,7 +872,7 @@ footer {
   position: absolute;
   top: 0;
   left: 50%;
-  ttransform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
   width: 16px;
   height: 16px;
   background: var(--primary);
@@ -915,11 +915,18 @@ footer {
 @media (max-width: 580px) {
 
   /* ── Global overflow guard ── */
-  *,
-  *::before,
-  *::after {
+  section,
+  .hero,
+  .about-columns,
+  .connect-container,
+  form,
+  .timeline-wrapper,
+  .card,
+  .about-left,
+  .about-right {
     max-width: 100vw;
     box-sizing: border-box;
+    overflow-x: hidden;
   }
 
   /* ── Global section spacing ── */
@@ -1348,7 +1355,7 @@ h3:hover::after {
   position: absolute;
   top: 0;
   left: 50%;
-  ttransform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
   width: 18px;
   height: 18px;
   background: var(--primary);
@@ -1373,7 +1380,7 @@ h3:hover::after {
   position: absolute;
   top: 0;
   left: 50%;
-  ttransform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
   width: 18px;
   height: 18px;
   background: var(--primary);
@@ -2001,6 +2008,7 @@ section {
     margin-bottom: 0.4rem !important;
   }
 }
+
 html,
 body,
 *,
