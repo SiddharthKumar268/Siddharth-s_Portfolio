@@ -1915,7 +1915,7 @@ h3:hover::after {
   }
 }
 
-/* html,
+html,
 body {
   overflow-x: hidden !important;
 }
@@ -1965,7 +1965,7 @@ section {
   #certification-progress,
   #internship-progress,
   #hackathon-progress {
-    left: 8px !important;
+    left: 9px !important;
     transform: translateX(-50%) !important;
     width: 12px !important;
     height: 12px !important;
@@ -2000,7 +2000,7 @@ section {
     text-align: left !important;
     margin-bottom: 0.4rem !important;
   }
-} */
+}
 
 html,
 body,
