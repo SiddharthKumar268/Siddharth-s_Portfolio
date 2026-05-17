@@ -1915,7 +1915,7 @@ h3:hover::after {
   }
 }
 
-html,
+/* html,
 body {
   overflow-x: hidden !important;
 }
@@ -1948,7 +1948,7 @@ section {
   overflow: hidden !important;
   max-width: 100vw !important;
   box-sizing: border-box !important;
-}
+} */
 
 /* @media (max-width: 768px) {
   .timeline-wrapper {
