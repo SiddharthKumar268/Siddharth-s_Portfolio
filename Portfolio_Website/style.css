@@ -1950,7 +1950,7 @@ section {
   box-sizing: border-box !important;
 }
 
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   .timeline-wrapper {
     padding: 0 0.5rem 0 1.5rem !important;
   }
@@ -2000,7 +2000,7 @@ section {
     text-align: left !important;
     margin-bottom: 0.4rem !important;
   }
-}
+} */
 
 html,
 body,
