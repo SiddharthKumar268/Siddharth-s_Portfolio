@@ -1965,7 +1965,7 @@ section {
   #certification-progress,
   #internship-progress,
   #hackathon-progress {
-    left: 50% !important;
+    left: 8px !important;
     transform: translateX(-50%) !important;
     width: 12px !important;
     height: 12px !important;
