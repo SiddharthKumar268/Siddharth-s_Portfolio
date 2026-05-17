@@ -40,6 +40,7 @@ let wordsInSentence = [];
 document.addEventListener("DOMContentLoaded", () => {
   if (sentences.length) setTimeout(type, newSentenceDelay);
 });
+
 function type() {
   if (wordIndex === 0 && letterIndex === 0) {
     typedTextSpan.innerHTML = "";
@@ -73,7 +74,6 @@ function type() {
 function erase() {
   const spans = typedTextSpan.querySelectorAll("span");
   if (spans.length === 0) {
-    // All erased, move to next sentence
     wordIndex = 0;
     letterIndex = 0;
     sentenceIndex = (sentenceIndex + 1) % sentences.length;
@@ -88,27 +88,37 @@ function erase() {
     lastSpan.textContent = text.substring(0, text.length - 1);
     setTimeout(erase, erasingDelay);
   } else {
-    // Remove empty span and continue erasing
     lastSpan.remove();
     setTimeout(erase, erasingDelay);
   }
 }
 
+function getOffsetTopRelativeToParent(el, parent) {
+  let top = 0;
+  while (el && el !== parent) {
+    top += el.offsetTop;
+    el = el.offsetParent;
+  }
+  return top;
+}
 
 function revealOnScroll() {
   const windowHeight = window.innerHeight;
+  const wrapper = document.querySelector("#education .timeline-wrapper");
+  let lastActive = null;
 
-  reveals.forEach((item, index) => {
+  reveals.forEach((item) => {
     const top = item.getBoundingClientRect().top;
-
     if (top < windowHeight - 150) {
       item.classList.add("active");
-
-      // Move the dot to this reveal item
-      const itemTop = item.offsetTop;
-      timelineProgress.style.top = itemTop + "px";
+      lastActive = item;
     }
   });
+
+  if (lastActive && timelineProgress && wrapper) {
+    const itemTop = getOffsetTopRelativeToParent(lastActive, wrapper);
+    timelineProgress.style.top = (itemTop + 20) + "px";
+  }
 }
 
 window.addEventListener("scroll", () => {
@@ -127,72 +137,73 @@ window.addEventListener("scroll", () => {
     }
   });
 
-  //  Trigger reveal
   revealOnScroll();
 });
 
-// Trigger once on load
 window.addEventListener("load", () => {
   revealOnScroll();
 });
 
-
+// Certifications
 const certificationItems = document.querySelectorAll("#certifications .timeline-item");
 const certificationProgress = document.getElementById("certification-progress");
 
 function revealCertifications() {
   const windowHeight = window.innerHeight;
+  const wrapper = document.querySelector("#certifications .timeline-wrapper");
+  let lastActive = null;
+
   certificationItems.forEach((item) => {
     const top = item.getBoundingClientRect().top;
-    if (top < windowHeight - 150) {
-      item.classList.add("active");
-
-      // Move the dot
-      const itemTop = item.offsetTop;
-      certificationProgress.style.top = itemTop + "px";
-    }
-  });
-}
-
-window.addEventListener("scroll", revealCertifications);
-window.addEventListener("load", revealCertifications);
-
-//Added here for internships
-const internshipItems = document.querySelectorAll("#internships .timeline-item");
-const internshipProgress = document.getElementById("internship-progress");
-
-function revealInternships() {
-  const windowHeight = window.innerHeight;
-  let lastActive = null;
-  
-  internshipItems.forEach((item) => {
-    const rect = item.getBoundingClientRect();
-    const top = rect.top;
-    
     if (top < windowHeight - 150) {
       item.classList.add("active");
       lastActive = item;
     }
   });
-  
-  if (lastActive && internshipProgress) {
-    const itemTop = lastActive.offsetTop;
-    internshipProgress.style.top = itemTop + "px";
+
+  if (lastActive && certificationProgress && wrapper) {
+    const itemTop = getOffsetTopRelativeToParent(lastActive, wrapper);
+    certificationProgress.style.top = (itemTop + 20) + "px";
+  }
+}
+
+window.addEventListener("scroll", revealCertifications);
+window.addEventListener("load", revealCertifications);
+
+// Internships
+const internshipItems = document.querySelectorAll("#internships .timeline-item");
+const internshipProgress = document.getElementById("internship-progress");
+
+function revealInternships() {
+  const windowHeight = window.innerHeight;
+  const wrapper = document.querySelector("#internships .timeline-wrapper");
+  let lastActive = null;
+
+  internshipItems.forEach((item) => {
+    const rect = item.getBoundingClientRect();
+    if (rect.top < windowHeight - 150) {
+      item.classList.add("active");
+      lastActive = item;
+    }
+  });
+
+  if (lastActive && internshipProgress && wrapper) {
+    const itemTop = getOffsetTopRelativeToParent(lastActive, wrapper);
+    internshipProgress.style.top = (itemTop + 20) + "px";
   }
 }
 
 window.addEventListener("scroll", revealInternships);
 window.addEventListener("load", revealInternships);
 document.addEventListener("DOMContentLoaded", revealInternships);
-  // <!-- ════════════════════════════════════════════════════ -->
-  // <!-- ADD THE FOLLOWING BLOCK TO THE BOTTOM OF script.js  -->
-  // <!-- ════════════════════════════════════════════════════ -->
-  // <!-- Added here for hackathons -->
+
+// Hackathons
 const hackathonItems = document.querySelectorAll("#hackathons .timeline-item");
 const hackathonProgress = document.getElementById("hackathon-progress");
 
 function revealHackathons() {
   const windowHeight = window.innerHeight;
+  const wrapper = document.querySelector("#hackathons .timeline-wrapper");
   let lastActive = null;
 
   hackathonItems.forEach((item) => {
@@ -203,8 +214,9 @@ function revealHackathons() {
     }
   });
 
-  if (lastActive && hackathonProgress) {
-    hackathonProgress.style.top = lastActive.offsetTop + "px";
+  if (lastActive && hackathonProgress && wrapper) {
+    const itemTop = getOffsetTopRelativeToParent(lastActive, wrapper);
+    hackathonProgress.style.top = (itemTop + 20) + "px";
   }
 }
 
