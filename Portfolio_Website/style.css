@@ -548,7 +548,7 @@ section h3 {
   position: absolute;
   top: 0;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%);
   width: 16px;
   height: 16px;
   background: var(--primary);
@@ -627,7 +627,7 @@ section h3 {
   #internship-progress,
   #hackathon-progress {
     left: 50% !important;
-    transform: translate(-50%, -50%);
+    ttransform: translateX(-50%);
     width: 14px;
     height: 14px;
   }
@@ -872,7 +872,7 @@ footer {
   position: absolute;
   top: 0;
   left: 50%;
-  transform: translate(-50%, -50%);
+  ttransform: translateX(-50%);
   width: 16px;
   height: 16px;
   background: var(--primary);
@@ -1348,7 +1348,7 @@ h3:hover::after {
   position: absolute;
   top: 0;
   left: 50%;
-  transform: translate(-50%, -50%);
+  ttransform: translateX(-50%);
   width: 18px;
   height: 18px;
   background: var(--primary);
@@ -1373,7 +1373,7 @@ h3:hover::after {
   position: absolute;
   top: 0;
   left: 50%;
-  transform: translate(-50%, -50%);
+  ttransform: translateX(-50%);
   width: 18px;
   height: 18px;
   background: var(--primary);
