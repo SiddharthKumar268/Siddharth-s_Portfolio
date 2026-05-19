@@ -1,22 +1,14 @@
-// ================================================================
-//  PREMIUM FEATURES — Resume Modal & Project Detail Modal
-//  GitHub Deployment Version
-// ================================================================
 
-// ── Resume Modal ────────────────────────────────────────────────
-
+// ── Resume Modal
 function openResumeModal() {
   document.getElementById('resumeModal').classList.add('active');
   document.body.classList.add('modal-open');
 }
-
 function closeResumeModal() {
   document.getElementById('resumeModal').classList.remove('active');
   document.body.classList.remove('modal-open');
 }
-
-// ── Project Detail Modal ────────────────────────────────────────
-
+// ── Project Detail Modal
 var projectExtraData = {
   'NazarVyapar': {
     category: 'Full Stack / IoT',
@@ -180,12 +172,9 @@ function closeProjectModal() {
   document.getElementById('projectModal').classList.remove('active');
   document.body.classList.remove('modal-open');
 }
-
-// ── Init Features ────────────────────────────────────────────────
+// ── Init Features
 
 function initFeatures() {
-
-  // Resume: Intercept the "Download Resume" button
   var allExploreLinks = document.querySelectorAll('.explore');
   allExploreLinks.forEach(function (link) {
     if (link.textContent.trim() === 'Download Resume') {
@@ -195,8 +184,6 @@ function initFeatures() {
       });
     }
   });
-
-  // Resume: Tab switching
   document.querySelectorAll('.resume-tab').forEach(function (tab) {
     tab.addEventListener('click', function () {
       document.querySelectorAll('.resume-tab').forEach(function (t) {
@@ -211,7 +198,6 @@ function initFeatures() {
     });
   });
 
-  // Projects: Attach click handlers to every .card
   document.querySelectorAll('#work1 .card').forEach(function (card) {
     card.style.position = 'relative';
 
@@ -247,20 +233,17 @@ function initFeatures() {
   });
 }
 
-// Run immediately if DOM is already parsed, otherwise wait
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', initFeatures);
 } else {
   initFeatures();
 }
 
-// Close on overlay click
 document.addEventListener('click', function (e) {
   if (e.target.id === 'resumeModal') closeResumeModal();
   if (e.target.id === 'projectModal') closeProjectModal();
 });
 
-// Close on ESC key
 document.addEventListener('keydown', function (e) {
   if (e.key === 'Escape') {
     closeResumeModal();
