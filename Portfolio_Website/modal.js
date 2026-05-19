@@ -18,6 +18,18 @@ function closeResumeModal() {
 // ── Project Detail Modal ────────────────────────────────────────
 
 var projectExtraData = {
+  'NazarVyapar': {
+    category: 'Full Stack / IoT',
+    tech: ['ESP32', 'PIR Sensor', 'LDR', 'Node.js', 'Express.js', 'MongoDB', 'Chart.js', 'Python', 'scikit-learn', 'Telegram Bot API'],
+    features: [
+      'Real-time footfall counting via PIR sensor',
+      'Hourly and weekly footfall bar charts with Chart.js',
+      'LDR-based ambient light vs footfall correlation',
+      'ML-powered peak hour prediction using scikit-learn',
+      'Telegram bot for automated daily business summaries'
+    ],
+    description: 'A low-cost retail footfall analyzer built for Indian small businesses. Uses ESP32 and PIR sensors to count customers in real-time, visualizes hourly and weekly trends, and predicts peak hours using ML — all under ₹300 in hardware.'
+  },
   'SatyaMath': {
     category: 'Blockchain',
     tech: ['Ethereum', 'Solidity', 'MetaMask', 'Ganache', 'Hardhat', 'JavaScript', 'Web3.js'],
