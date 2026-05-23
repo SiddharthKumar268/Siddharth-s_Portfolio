@@ -1,5 +1,4 @@
 
-/* ── Shared Modal Base ───────────────────────────────────────── */
 
 .modal-overlay {
   position: fixed;
@@ -50,7 +49,6 @@ body.modal-open {
   transform: scale(1) translateY(0);
 }
 
-/* Scrollbar */
 .modal-container::-webkit-scrollbar {
   width: 5px;
 }
@@ -65,7 +63,6 @@ body.modal-open {
   background: rgba(185, 255, 52, 0.45);
 }
 
-/* Close Button */
 .modal-close {
   position: absolute;
   top: 1.2rem;
@@ -94,9 +91,6 @@ body.modal-open {
   transform: rotate(90deg) scale(1.1);
 }
 
-/* ================================================================
-   RESUME MODAL
-   ================================================================ */
 
 .resume-header {
   display: flex;
@@ -204,7 +198,6 @@ body.modal-open {
   to   { transform: scaleX(1); opacity: 1; }
 }
 
-/* Tab Content */
 .resume-tab-content {
   padding: 2rem 2.5rem;
   min-height: 320px;
@@ -224,7 +217,6 @@ body.modal-open {
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* Section Titles */
 .resume-section-title {
   color: #b9ff34;
   font-size: 1.15rem;
@@ -235,7 +227,6 @@ body.modal-open {
   letter-spacing: 0.02em;
 }
 
-/* Resume Items */
 .resume-item {
   margin-bottom: 1.2rem;
   padding: 1.2rem 1.4rem;
@@ -273,7 +264,6 @@ body.modal-open {
   margin: 0;
 }
 
-/* Skills Grid */
 .resume-skills-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -322,8 +312,6 @@ body.modal-open {
   transform: translateY(-2px);
   box-shadow: 0 4px 16px rgba(185, 255, 52, 0.15);
 }
-
-/* Download Bar */
 .resume-download-bar {
   padding: 1.3rem 2.5rem;
   border-top: 1px solid rgba(255, 255, 255, 0.07);
@@ -378,10 +366,6 @@ body.modal-open {
   color: #b9ff34;
   background: rgba(185, 255, 52, 0.05);
 }
-
-/* ================================================================
-   PROJECT DETAIL MODAL
-   ================================================================ */
 
 .project-modal-content {
   padding: 0;
@@ -462,7 +446,6 @@ body.modal-open {
   opacity: 0.8;
 }
 
-/* Tech Tags */
 .project-modal-tech {
   display: flex;
   flex-wrap: wrap;
@@ -485,8 +468,6 @@ body.modal-open {
   background: rgba(185, 255, 52, 0.22);
   transform: translateY(-1px);
 }
-
-/* Features List */
 .project-modal-features {
   list-style: none;
   padding: 0;
@@ -511,7 +492,6 @@ body.modal-open {
   font-size: 1rem;
 }
 
-/* Action Buttons */
 .project-modal-actions {
   display: flex;
   gap: 0.8rem;
@@ -558,7 +538,6 @@ body.modal-open {
   color: #b9ff34;
 }
 
-/* Card clickable hint */
 #work1 .card {
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
@@ -591,7 +570,7 @@ body.modal-open {
   transform: translateY(0);
 }
 
-/* ── Responsive ──────────────────────────────────────────────── */
+/* Responseivnes */
 
 @media (max-width: 768px) {
   .resume-header {
