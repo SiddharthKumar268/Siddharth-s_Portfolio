@@ -34,6 +34,18 @@ var projectExtraData = {
     ],
     description: 'A secure blockchain-based e-voting system using a commit-reveal scheme to ensure vote privacy and integrity. Built on Ethereum with smart contracts for transparent, decentralized voting and MetaMask for wallet-based authentication.'
   },
+  'RakhtSetu - रक्त सेतु': {
+    category: 'Cloud / AWS',
+    tech: ['Node.js', 'AWS Lambda', 'DynamoDB', 'API Gateway', 'S3', 'SNS', 'EmailJS', 'Serverless Framework'],
+    features: [
+      'Real-time donor matching by blood group and city',
+      'Serverless architecture using AWS Lambda functions',
+      'Blood stock tracking across hospitals via DynamoDB',
+      'Emergency SMS alerts to donors using Amazon SNS(Upcoming)',
+      'Static frontend hosted on S3 with REST API integration'
+    ],
+    description: "A serverless cloud-based blood donation platform built on AWS that bridges donors with those in urgent need. Features real-time matching, hospital blood stock management, and instant emergency alerts — all on a fully scalable, low-cost serverless stack."
+  },
   'Apna Apna Dekh': {
     category: 'Frontend',
     tech: ['HTML5', 'CSS3', 'JavaScript', 'Chart.js'],
