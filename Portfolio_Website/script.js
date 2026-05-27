@@ -14,17 +14,29 @@ spans.forEach((span, i) => {
   span.style.setProperty('--deg', `${i * angle}deg`);
 });
 
+// const sentences = [
+//   "From Logic to Launch — Building Smarter Web Apps",
+//   "From Backend to Browser — Code that Connects",
+//   "From API to UI — Crafting Seamless Experiences",
+//   "From Data to Decisions — Engineering Intelligent Systems",
+//   "From Problem to Product — Powered by Code",
+//   "From Codebase to Cloud — Full-Stack Without Limits",
+//   "From Functions to Firewalls — Engineering with Precision",
+//   "From Mongo to Oracle — Fluent in Data",
+//   "From Script to Scale — Web Development that Works",
+//   "From Syntax to Systems — Code that Solves"
+// ];
 const sentences = [
-  "From Logic to Launch — Building Smarter Web Apps",
-  "From Backend to Browser — Code that Connects",
-  "From API to UI — Crafting Seamless Experiences",
-  "From Data to Decisions — Engineering Intelligent Systems",
-  "From Problem to Product — Powered by Code",
-  "From Codebase to Cloud — Full-Stack Without Limits",
-  "From Functions to Firewalls — Engineering with Precision",
-  "From Mongo to Oracle — Fluent in Data",
-  "From Script to Scale — Web Development that Works",
-  "From Syntax to Systems — Code that Solves"
+  "5 Patents Deep — Where FinTech Meets Paranoia 🔐",
+  "Yantra 2026 — Won It. Shipped It. Slept Later.",
+  "SAIL Intern: Teaching Steel to Think with AI 🏭",
+  "BlueStock Fintech — Where My Code Met Real Money",
+  "Oracle OCI Certified — Cloud Isn't Scary Anymore ☁️",
+  "9 Projects. 0 Half-Built. All Production-Ready.",
+  "CGPA 9.24 — Nerd by Day, Builder by Night 🌙",
+  "LSTM + ZKP + Graph AI = Fraud Doesn't Stand a Chance",
+  "GDG Women Techies Finalist — Showed Up, Stood Out",
+  "SIH Submitted — Because Real Problems Need Real Code 🇮🇳"
 ];
 
 const typingDelay = 60;
