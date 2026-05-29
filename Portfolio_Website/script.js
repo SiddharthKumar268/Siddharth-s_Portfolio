@@ -33,7 +33,7 @@ const sentences = [
   "BlueStock Fintech — Where My Code Met Real Money",
   "Oracle OCI Certified — Cloud Isn't Scary Anymore ☁️",
   "9 Projects. 0 Half-Built. All Production-Ready.",
-  "CGPA 9.24 — Nerd by Day, Builder by Night 🌙",
+  "CGPA 9.30 — Nerd by Day, Builder by Night 🌙",
   "LSTM + ZKP + Graph AI = Fraud Doesn't Stand a Chance",
   "GDG Women Techies Finalist — Showed Up, Stood Out",
   "SIH Submitted — Because Real Problems Need Real Code 🇮🇳"
