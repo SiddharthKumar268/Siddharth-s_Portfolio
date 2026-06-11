@@ -81,7 +81,7 @@ if (achievementsContainer) {
   let glowFrame = 0; // throttle glow updates
 
   function getAnglePerCard() {
-    return 360 / achCards.length;
+    return window.innerWidth <= 768 ? 40 : 45;
 }
 
   function updateBlueGlow() {
